@@ -1,105 +1,238 @@
-import React from 'react';
-import '../../assets/styles/dashboard.css';
+import './dashboard.css';
 
-export default function Dashboard() {
+const Dashboard = () => {
   return (
     <>
-
-
-<div className="layout">
-
-{/* SIDEBAR */}
-<div className="sidebar">
-    <h2>ATHENA</h2>
-    <a className="active">Inicio</a>
-    <a>Simulacros</a>
-    <a>Prácticas</a>
-    <a>Tutor IA</a>
-    <a>Estadísticas</a>
-    <a>Perfil</a>
-</div>
-
-{/* MAIN */}
-<div className="main">
-
-{/* HEADER */}
-<div className="header-card">
-    <h1>¡Hola, Estudiante! 👋</h1>
-    <p>Tu objetivo: <b>350 puntos</b>. Estás a 45 puntos de alcanzarlo.</p>
-
-    <div className="stats">
-        <div className="stat">
-            <h3>12</h3>
-            <span>Racha</span>
-        </div>
-
-        <div className="stat">
-            <h3>305</h3>
-            <span>Puntaje</span>
-        </div>
-    </div>
-</div>
-
-{/* RECOMENDADO */}
-<div className="card big">
-    <div>
-        <span className="badge">RECOMENDADO</span>
-        <h2>Simulacro Rápido</h2>
-        <p>Refuerza lectura crítica y mejora tu puntaje.</p>
-
-        <button className="btn-primary">Comenzar ahora</button>
-    </div>
-
-    <img src="/assets/book.png" />
-</div>
-
-{/* GRID */}
-<div className="grid">
-
-{/* ACTIVIDAD */}
-<div className="card">
-    <h3>Actividad reciente</h3>
-
-    <div className="list-item">
-        <span>Práctica Matemáticas</span>
-        <b>80%</b>
-    </div>
-
-    <div className="list-item">
-        <span>Chat IA</span>
-        <b>✔</b>
-    </div>
-
-    <div className="list-item">
-        <span>Simulacro Ciencias</span>
-        <b>65%</b>
-    </div>
-
-</div>
-
-{/* DESAFIOS */}
-<div className="card">
-    <h3>Desafíos</h3>
-
-    <div className="progress">
-        <p>Completar 3 simulacros</p>
-        <div className="bar"><div style={{"width":"70%"}}></div></div>
-    </div>
-
-    <div className="progress">
-        <p>Mantener racha</p>
-        <div className="bar"><div style={{"width":"100%"}}></div></div>
-    </div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</>
+      {/*  Cabecera  */}
+              <header className="header">
+      
+                  <div className="user-welcome">
+                      <h1>¡Hola, Estudiante! 👋</h1>
+      
+                      <p>
+                          Tu objetivo:
+                          <span className="highlight">350 puntos</span>.
+                          Estás a 45 puntos de alcanzarlo.
+                      </p>
+                  </div>
+      
+                  <div className="stats-overview">
+      
+                      <div className="stat-card">
+      
+                          <i className="fas fa-fire icon-fire"></i>
+      
+                          <div>
+                              <span className="stat-value">12</span>
+      
+                              <p className="stat-label">RACHA</p>
+      
+                              <p className="stat-sub">¡Sigue así!</p>
+                          </div>
+      
+                      </div>
+      
+                      <div className="stat-card">
+      
+                          <i className="fas fa-star icon-star"></i>
+      
+                          <div>
+                              <span className="stat-value">305</span>
+      
+                              <p className="stat-label">PUNTAJE EST.</p>
+      
+                              <p className="stat-sub green">+35 esta semana</p>
+                          </div>
+      
+                      </div>
+      
+                  </div>
+      
+              </header>
+      
+              {/*  Grid  */}
+              <div className="grid-layout">
+      
+                  {/*  Recomendado  */}
+                  <section className="card recommended-card">
+      
+                      <span className="tag">
+                          <i className="fas fa-bolt"></i>
+                          RECOMENDADO HOY
+                      </span>
+      
+                      <h2>Simulacro Rápido: Lectura Crítica</h2>
+      
+                      <p>
+                          Hemos detectado que necesitas reforzar textos filosóficos.
+                          15 minutos te ayudarán a subir
+                          <span className="blue-text">5 puntos estimados</span>.
+                      </p>
+      
+                      <button className="btn-cta">
+                          Comenzar ahora
+                          <i className="fas fa-arrow-right"></i>
+                      </button>
+      
+                      <div className="mascot-book">
+                          <img src="https://via.placeholder.com/150" alt="Libro 3D" />
+                      </div>
+      
+                  </section>
+      
+                  {/*  Gráfico  */}
+                  <section className="card chart-card">
+      
+                      <div className="card-header">
+      
+                          <h3>Progreso Semanal</h3>
+      
+                          <select className="selector-week">
+                              <option>Esta semana</option>
+                          </select>
+      
+                      </div>
+      
+                      <div className="chart-placeholder">
+      
+                          <div className="line-chart-mock"></div>
+      
+                          <div className="chart-labels">
+                              <span>Lun</span>
+                              <span>Mar</span>
+                              <span>Mié</span>
+                              <span>Jue</span>
+                              <span>Vie</span>
+                              <span>Sáb</span>
+                              <span className="active">Hoy</span>
+                          </div>
+      
+                      </div>
+      
+                      <p className="chart-footer">
+                          <i className="fas fa-chart-line"></i>
+                          <span className="green">+35 puntos</span>
+                          vs. semana pasada
+                      </p>
+      
+                  </section>
+      
+                  {/*  Actividad  */}
+                  <section className="card list-card">
+      
+                      <div className="card-header">
+      
+                          <h3>
+                              <i className="far fa-calendar-alt"></i>
+                              Actividad Reciente
+                          </h3>
+      
+                          <a href="#" className="view-all">
+                              Ver todas
+                              <i className="fas fa-chevron-right"></i>
+                          </a>
+      
+                      </div>
+      
+                      <div className="activity-list">
+      
+                          <div className="activity-item">
+      
+                              <div className="item-icon green-bg">
+                                  <i className="fas fa-bullseye"></i>
+                              </div>
+      
+                              <div className="item-info">
+                                  <h4>Práctica: Matemáticas</h4>
+                                  <p>Hoy, 10:30 AM</p>
+                              </div>
+      
+                              <div className="item-stat">
+                                  <span className="percent green">80%</span>
+                                  <p>Acierto</p>
+                              </div>
+      
+                              <i className="fas fa-chevron-right arrow"></i>
+      
+                          </div>
+      
+                          <div className="activity-item">
+      
+                              <div className="item-icon blue-bg">
+                                  <i className="fas fa-comment"></i>
+                              </div>
+      
+                              <div className="item-info">
+                                  <h4>Chat con Tutor IA</h4>
+                                  <p>Ayer, 8:15 PM</p>
+                              </div>
+      
+                              <span className="badge-tag">Resolución dudas</span>
+      
+                              <i className="fas fa-chevron-right arrow"></i>
+      
+                          </div>
+      
+                      </div>
+      
+                  </section>
+      
+                  {/*  Desafíos  */}
+                  <section className="card list-card">
+      
+                      <div className="card-header">
+      
+                          <h3>
+                              <i className="fas fa-trophy"></i>
+                              Desafíos Semanales
+                          </h3>
+      
+                          <a href="#" className="view-all">
+                              Ver todos
+                              <i className="fas fa-chevron-right"></i>
+                          </a>
+      
+                      </div>
+      
+                      <div className="challenge-list">
+      
+                          <div className="challenge-item">
+      
+                              <div className="challenge-info">
+                                  <span>Completar 3 simulacros</span>
+                                  <span>2 / 3</span>
+                              </div>
+      
+                              <div className="progress-bar">
+                                  <div className="progress" style={{ width: '66%' }}></div>
+                              </div>
+      
+                          </div>
+      
+                          <div className="challenge-item">
+      
+                              <div className="challenge-info">
+                                  <span>Mantener racha de 5 días</span>
+      
+                                  <span className="green">
+                                      5 / 5
+                                      <i className="fas fa-check-circle"></i>
+                                  </span>
+                              </div>
+      
+                              <div className="progress-bar">
+                                  <div className="progress green-bg" style={{ width: '100%' }}></div>
+                              </div>
+      
+                          </div>
+      
+                      </div>
+      
+                  </section>
+      
+              </div>
+    </>
   );
-}
+};
+
+export default Dashboard;

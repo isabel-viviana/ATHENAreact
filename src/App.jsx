@@ -1,40 +1,45 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-// Layout y Componentes base
+// Layout base
 import MainLayout from './components/MainLayout';
 
 // Páginas de Autenticación
 import LoginStudent from './pages/authentications/login_student';
 import RegisterStudent from './pages/authentications/register_student';
 
-// Páginas Internas (Asegúrate de que los nombres de archivo coincidan)
+// Páginas Internas
 import Dashboard from './pages/dashboards/dashboard';
-import MockExam from './pages/mock_exams/mock_exam';
-import ChatTutor from './pages/ai_tutor/chat'; // o el nombre que tenga tu archivo .jsx
-import Analytics from './pages/analytics/analytics';
-import Profile from './pages/profiles/profile';
+import MockExams from './pages/mock_exams/mock_exam';
+import AiTutor from './pages/ai_tutor/chat';
+import Practices from './pages/practices/practice_config';
+import Profiles from './pages/profiles/profile';
+import Ranking from './pages/ranking/ranking';
+import Statistics from './pages/statistics/statistics';
+import Store from './pages/store/store';
+import Subscriptions from './pages/subscriptions/subscription';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* 1. RUTAS PÚBLICAS: Sin Sidebar ni Header */}
+        {/* Rutas sin Sidebar (Login/Registro) */}
         <Route path="/login" element={<LoginStudent />} />
         <Route path="/register" element={<RegisterStudent />} />
-
-        {/* 2. RUTAS PRIVADAS: Todas envueltas en el MainLayout */}
+        
+        {/* Rutas con Sidebar y Header (MainLayout) */}
         <Route element={<MainLayout />}>
-          {/* Al entrar a /dashboard, se carga el Sidebar + Dashboard */}
           <Route path="/dashboard" element={<Dashboard />} />
-          
-          {/* Agregamos el resto de tus módulos */}
-          <Route path="/mock-exams" element={<MockExam />} />
-          <Route path="/ai-tutor" element={<ChatTutor />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/mock-exams" element={<MockExams />} />
+          <Route path="/ai-tutor" element={<AiTutor />} />
+          <Route path="/practices" element={<Practices />} />
+          <Route path="/profile" element={<Profiles />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/subscriptions" element={<Subscriptions />} />
         </Route>
 
-        {/* 3. REDIRECCIÓN: Si el usuario escribe cualquier cosa loca, al Login */}
+        {/* Redirección por defecto */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

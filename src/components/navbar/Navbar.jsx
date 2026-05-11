@@ -1,14 +1,14 @@
-import './Navbar.css';
+﻿import './Navbar.css';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-search">
-        <input type="text" placeholder="Buscar simulacros, temas..." />
+    <nav className="global-navbar">
+      <div className="global-navbar-search">
+        <input type="text" placeholder="Buscar módulos, recursos..." />
       </div>
-      <div className="navbar-links">
-        <a href="#noticias">Noticias</a>
-        <a href="#ayuda">Ayuda</a>
+      <div className="global-navbar-links">
+        <a href="#">Ayuda</a>
+        <a href="#">Configuración</a>
       </div>
     </nav>
   );

@@ -1,45 +1,57 @@
-import React from 'react';
+import './register_student.css';
 
-export default function RegisterStudent() {
+const RegisterStudent = () => {
   return (
     <>
-
-
-<div className="auth-container">
-
-<div className="auth-left">
-    
-    <div className="brand">
-        <img src="/assets/logo.png" />
-        <h1>ATHENA</h1>
-    </div>
-    <p>Vamos paso por paso.</p>
-    <img src="/assets/cat.png" />
-</div>
-
-<div className="auth-right">
-<div className="auth-box">
-
-<h2>Crear cuenta estudiante</h2>
-<p>Ingresa tu correo o número para continuar.</p>
-
-<form>
-<input type="text" className="auth-input" placeholder="Correo o número" />
-<button type="submit" className="auth-button">Continuar</button>
-</form>
-
-<div className="divider"><span></span> ó <span></span></div>
-
-<button className="social-btn">Continuar con Google</button>
-<button className="social-btn">Continuar con Facebook</button>
-<button className="social-btn">Continuar con Apple</button>
-
-</div>
-</div>
-
-</div>
-
-
-</>
+      <div className="main-container">
+              {/*  Panel Izquierdo  */}
+              <div className="left-panel">
+                  <div className="logo-top">
+                      <img src="https://via.placeholder.com/40" alt="Logo" />
+                      <h1>ATHENA</h1>
+                  </div>
+                  <p className="subtitle">Vamos paso por paso.</p>
+                  <div className="mascot-container">
+                      {/*  Aquí iría la imagen del zorro con lentes  */}
+                      <img src="/Assets/zorrito3d.jpeg" alt="Mascota Athena" className="mascot" />
+                  </div>
+              </div>
+      
+              {/*  Panel Derecho  */}
+              <div className="right-panel">
+                  <div className="form-container">
+                      <h2>Crear cuenta estudiante</h2>
+                      <p className="description">Ingresa tu correo o número para continuar.</p>
+      
+                      <form>
+                          <input type="text" placeholder="Correo electrónico o número" className="input-field" />
+                          <button type="submit" className="btn-primary">Continuar</button>
+                      </form>
+      
+                      <div className="divider">
+                          <span>ó</span>
+                      </div>
+      
+                      <div className="social-buttons">
+                          <button className="btn-social">
+                              <i className="fab fa-google"></i> Continuar con Google
+                          </button>
+                          <button className="btn-social">
+                              <i className="fab fa-facebook-f"></i> Continuar con Facebook
+                          </button>
+                          <button className="btn-social">
+                              <i className="fab fa-apple"></i> Continuar con Apple
+                          </button>
+                      </div>
+      
+                      <p className="footer-text">
+                          Al continuar, aceptas Términos y Condiciones y Política de privacidad
+                      </p>
+                  </div>
+              </div>
+          </div>
+    </>
   );
-}
+};
+
+export default RegisterStudent;

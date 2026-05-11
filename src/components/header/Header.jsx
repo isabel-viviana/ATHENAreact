@@ -1,17 +1,17 @@
-import './Header.css';
+﻿import './Header.css';
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="header-content">
+    <header className="global-header">
+      <div className="global-header-content">
         <h1>Panel de Control - ATHENA</h1>
-        <div className="user-profile">
-          <span className="notifications">🔔</span>
-          <div className="user-info">
-            <p className="user-name">Usuario Estudiante</p>
-            <p className="user-role">ADSO - SENA</p>
+        <div className="global-user-profile">
+          <span className="global-notifications">🔔</span>
+          <div className="global-user-info">
+            <p className="global-user-name">Usuario Estudiante</p>
+            <p className="global-user-role">ADSO - SENA</p>
           </div>
-          <img src="/img/user-avatar.png" alt="Avatar" className="avatar" />
+          <img src="/img/user-avatar.png" alt="Avatar" className="global-avatar" />
         </div>
       </div>
     </header>

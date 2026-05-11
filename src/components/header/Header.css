@@ -1,60 +1,70 @@
-.header {
-    background: #121D2E;
-    color: #FFFFFF;
-    padding: 15px 30px;
-    border-bottom: 1px solid #2C3E50;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    font-family: 'Inter', sans-serif;
+﻿/* ==========================================
+   GLOBAL HEADER
+========================================== */
+
+.global-header {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.global-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.header-content h1 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
+.global-header h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
 }
 
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.global-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.notifications {
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.2s;
+.global-notifications {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: 0.2s;
 }
 
-.notifications:hover {
-    transform: scale(1.1);
+.global-notifications:hover {
+  color: var(--primary);
 }
 
-.user-info {
-    text-align: right;
+.global-user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }
 
-.user-name {
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0;
+.global-user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
 }
 
-.user-role {
-    font-size: 12px;
-    color: #B0B8C1;
-    margin: 0;
+.global-user-role {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #3498DB;
+.global-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
 }

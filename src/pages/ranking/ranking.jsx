@@ -1,14 +1,9 @@
-import React from 'react';
-
-export default function Ranking() {
+const Ranking = () => {
   return (
     <>
-
-    <div className="ranking-container">
-        <h1>Ranking</h1>
-    </div>
-    <script src="../../js/global.js"></script>
-
-</>
+      
+    </>
   );
-}
+};
+
+export default Ranking;
