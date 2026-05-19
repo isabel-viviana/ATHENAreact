@@ -28,6 +28,8 @@ import Analysis from './pages/statistics/analysis';
 import Store from './pages/store/store';
 import Subscriptions from './pages/subscriptions/subscription';
 import Notificaciones from './pages/profiles/profile_notifications';
+import ForgotPassword from './pages/authentications/forgot_password';
+import ResetPassword from './pages/authentications/reset_password';
 import Payments from './pages/subscriptions/payments';
 
 
@@ -38,7 +40,8 @@ function App() {
         {/* Rutas sin Sidebar (Login/Registro) */}
         <Route path="/login" element={<LoginStudent />} />
         <Route path="/register" element={<RegisterStudent />} />
-        <Route path="/forgotPassword" element={<forgot_password />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         
         {/* Rutas con Sidebar (MainLayout) */}
         <Route element={<MainLayout />}>

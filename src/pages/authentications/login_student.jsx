@@ -53,7 +53,7 @@ const LoginStudent = () => {
                           </p>
                           <div className="footer-links">
                             <Link to="/register">Crear Cuenta</Link>
-                            <Link to="#">¿Olvidaste la contraseña?</Link>
+                            <Link to="/forgotPassword">¿Olvidaste la contraseña?</Link>
                           </div>
                       </div>
                   </div>

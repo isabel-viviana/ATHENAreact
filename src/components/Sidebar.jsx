@@ -4,10 +4,12 @@ import './Sidebar.css';
 const Sidebar = () => {
   const location = useLocation();
 
-  const isActive = (path) => {
-    return location.pathname === path
-      ? 'sidebar__link--active'
-      : '';
+  const isActive = (path, startsWith = false) => {
+    const active = startsWith
+      ? location.pathname.startsWith(path)
+      : location.pathname === path;
+
+    return active ? 'sidebar__link--active' : '';
   };
 
   return (
@@ -32,7 +34,7 @@ const Sidebar = () => {
 
         <Link
           to="/mock-config"
-          className={`sidebar__link ${isActive('/mock-exams')}`}
+          className={`sidebar__link ${isActive('/mock', true)}`}
         >
           <i className="fas fa-clipboard-check"></i>
           <span>Simulacros</span>
@@ -40,7 +42,7 @@ const Sidebar = () => {
 
         <Link
           to="/practices"
-          className={`sidebar__link ${isActive('/practices')}`}
+          className={`sidebar__link ${isActive('/practices', true)}`}
         >
           <i className="fas fa-dumbbell"></i>
           <span>Prácticas</span>
@@ -63,8 +65,16 @@ const Sidebar = () => {
         </Link>
 
         <Link
+          to="/ranking"
+          className={`sidebar__link ${isActive('/ranking')}`}
+        >
+          <i className="fas fa-trophy"></i>
+          <span>Ranking</span>
+        </Link>
+
+        <Link
           to="/profile"
-          className={`sidebar__link ${isActive('/profile')}`}
+          className={`sidebar__link ${isActive('/profile', true)}`}
         >
           <i className="fas fa-user-circle"></i>
           <span>Perfil</span>

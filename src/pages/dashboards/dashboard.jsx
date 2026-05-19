@@ -149,7 +149,7 @@ const Dashboard = () => {
               Actividad Reciente
             </h3>
 
-            <Link to="/activity" className="view-all">
+            <Link to="/mock-history" className="view-all">
 
               Ver todas
               <i className="fas fa-chevron-right"></i>
