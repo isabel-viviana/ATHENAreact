@@ -1,4 +1,5 @@
 import './statistics.css';
+import { Link } from 'react-router-dom';
 
 const Statistics = () => {
   return (
@@ -12,10 +13,13 @@ const Statistics = () => {
                   <h1>Estadísticas y Progreso</h1>
                   <p>Analiza tu rendimiento y sigue mejorando cada día.</p>
                 </div>
-                <a href="/Scren-AnalisisMateria-Estadisticas/index.html" className="page-header__btn">
+                <Link to="/analysis" className='btn-primary'>
+                
                   <i className="fas fa-chart-bar"></i>
                   Ver Análisis Profundo
-                </a>
+                  
+                </Link>
+                
               </section>
       
               {/*  TOP CARDS  */}

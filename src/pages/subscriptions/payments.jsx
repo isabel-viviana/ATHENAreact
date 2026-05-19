@@ -1,13 +1,14 @@
 import './payments.css';
+import { Link } from 'react-router-dom';
 
 const Payments = () => {
   return (
     <>
       <div className="checkout-wrapper">
       
-            <a href="#" className="checkout-back">
-              ← Volver a planes
-            </a>
+            <Link to="/subscriptions">
+            ← Volver a planes
+            </Link>
       
             <h1 className="checkout-title">
               Resumen de Compra

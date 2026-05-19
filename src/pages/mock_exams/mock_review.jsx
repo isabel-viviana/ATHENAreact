@@ -1,4 +1,5 @@
 import './mock_review.css';
+import { Link } from 'react-router-dom';
 
 const MockReview = () => {
   return (
@@ -7,10 +8,13 @@ const MockReview = () => {
           <section className="page-header">
       
             <div className="page-header__content">
-              <span className="page-header__breadcrumb">
-                <i className="fas fa-arrow-left"></i>
-                Volver a resultados
-              </span>
+              <Link to="/mock-result">
+                <span className="page-header__breadcrumb">
+                  <i className="fas fa-arrow-left"></i>
+                  Volver a resultados
+                </span>
+              </Link>
+              
       
               <h1>Detalle de Respuestas</h1>
       

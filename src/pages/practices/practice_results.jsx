@@ -1,4 +1,5 @@
 import './practice_results.css';
+import { Link } from 'react-router-dom';
 
 const PracticeResults = () => {
   return (
@@ -37,14 +38,18 @@ const PracticeResults = () => {
               </div>
       
               <div className="success-buttons">
-      
-                <button className="btn btn-secondary">
-                  Volver a Áreas
-                </button>
-      
-                <button className="btn btn-primary">
-                  Continuar Practicando
-                </button>
+                <Link to="/practices">
+                  <button className="btn btn-secondary">
+                    Volver a Áreas
+                  </button>
+                </Link>
+               
+                <Link to="/practices-full">
+                  <button className="btn btn-primary">
+                    Continuar Practicando
+                  </button>
+                </Link>
+                
       
               </div>
       

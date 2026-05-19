@@ -1,4 +1,5 @@
 import './mock_exam.css';
+import { Link } from 'react-router-dom';
 
 const MockExam = () => {
   return (
@@ -69,10 +70,13 @@ const MockExam = () => {
                 Anterior
               </button>
       
-              <button className="footer-btn footer-btn--primary">
-                Siguiente
-                <i className="fas fa-chevron-right"></i>
-              </button>
+              <Link to="/mock-result">
+                <button className="footer-btn footer-btn--primary">
+                  Siguiente
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </Link>
+              
       
             </section>
       

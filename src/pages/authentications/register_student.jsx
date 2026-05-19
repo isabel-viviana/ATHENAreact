@@ -1,4 +1,8 @@
 import './register_student.css';
+import ZorritoLogo from "../../assets/images/Zorrito6.png";
+import Zorrito2D from "../../assets/images/Zorrito2D.png";
+import { Link } from 'react-router-dom';
+
 
 const RegisterStudent = () => {
   return (
@@ -7,13 +11,12 @@ const RegisterStudent = () => {
               {/*  Panel Izquierdo  */}
               <div className="left-panel">
                   <div className="logo-top">
-                      <img src="https://via.placeholder.com/40" alt="Logo" />
+                      <img src={ZorritoLogo} alt="Logo" className='small-logo' />
                       <h1>ATHENA</h1>
                   </div>
                   <p className="subtitle">Vamos paso por paso.</p>
                   <div className="mascot-container">
-                      {/*  Aquí iría la imagen del zorro con lentes  */}
-                      <img src="/Assets/zorrito3d.jpeg" alt="Mascota Athena" className="mascot" />
+                      <img src={Zorrito2D} alt="Mascota Athena" className="mascot" />
                   </div>
               </div>
       
@@ -25,7 +28,7 @@ const RegisterStudent = () => {
       
                       <form>
                           <input type="text" placeholder="Correo electrónico o número" className="input-field" />
-                          <button type="submit" className="btn-primary">Continuar</button>
+                          <Link to="/login"><button type="submit" className="btn-primary">Continuar</button></Link>
                       </form>
       
                       <div className="divider">

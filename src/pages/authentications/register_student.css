@@ -163,6 +163,10 @@ h2 {
     text-align: center;
 }
 
+.small-logo {
+    width: 40px; /* Ajuste para el logo pequeño */
+}
+
 /* Responsivo para móviles */
 @media (max-width: 768px) {
     .main-container {

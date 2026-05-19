@@ -1,4 +1,5 @@
 import './practice_full.css';
+import { Link } from 'react-router-dom';
 
 const PracticeFull = () => {
   return (
@@ -68,11 +69,13 @@ const PracticeFull = () => {
                 <i className="fas fa-chevron-left"></i>
                 Anterior
               </button>
-      
-              <button className="footer-btn footer-btn--primary">
-                Siguiente
-                <i className="fas fa-chevron-right"></i>
-              </button>
+              <Link to="/practices-result">
+                <button className="footer-btn footer-btn--primary">
+                  Siguiente
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </Link>
+              
       
             </section>
       

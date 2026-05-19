@@ -1,4 +1,5 @@
 import './mock_history.css';
+import { Link } from 'react-router-dom';
 
 const MockHistory = () => {
   return (
@@ -39,10 +40,13 @@ const MockHistory = () => {
                       <span className="score">305</span>
                       <span className="points">PUNTOS</span>
                     </div>
-      
-                    <button className="history-card__btn">
-                      Ver
-                    </button>
+
+                    <Link to="/mock-result">
+                      <button className="history-card__btn">
+                        Ver
+                      </button>
+                    </Link>
+                    
       
                   </div>
       
@@ -70,10 +74,12 @@ const MockHistory = () => {
                       <span className="score">310</span>
                       <span className="points">PUNTOS</span>
                     </div>
-      
-                    <button className="history-card__btn">
-                      Ver
-                    </button>
+                    
+                    <Link to="/mock-result">
+                      <button className="history-card__btn">
+                        Ver
+                      </button>
+                    </Link>
       
                   </div>
       
@@ -102,9 +108,11 @@ const MockHistory = () => {
                       <span className="points">PUNTOS</span>
                     </div>
       
-                    <button className="history-card__btn">
-                      Ver
-                    </button>
+                    <Link to="/mock-result">
+                      <button className="history-card__btn">
+                        Ver
+                      </button>
+                    </Link>
       
                   </div>
       
@@ -133,9 +141,11 @@ const MockHistory = () => {
                       <span className="points">PUNTOS</span>
                     </div>
       
-                    <button className="history-card__btn">
-                      Ver
-                    </button>
+                    <Link to="/mock-result">
+                      <button className="history-card__btn">
+                        Ver
+                      </button>
+                    </Link>
       
                   </div>
       
@@ -164,9 +174,11 @@ const MockHistory = () => {
                       <span className="points">PUNTOS</span>
                     </div>
       
-                    <button className="history-card__btn">
-                      Ver
-                    </button>
+                    <Link to="/mock-result">
+                      <button className="history-card__btn">
+                        Ver
+                      </button>
+                    </Link>
       
                   </div>
       

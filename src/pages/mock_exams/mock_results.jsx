@@ -1,4 +1,5 @@
 import './mock_results.css';
+import { Link } from 'react-router-dom';
 
 const MockResults = () => {
   return (
@@ -182,15 +183,19 @@ const MockResults = () => {
       
             {/*  BOTONES  */}
             <section className="actions">
-      
-              <button className="btn btn--secondary">
-                Revisar Respuestas
-              </button>
-      
-              <button className="btn btn--primary">
-                Explicación con Tutor IA
-              </button>
-      
+
+              <Link to="/mock-review">
+                <button className="btn btn--secondary">
+                  Revisar Respuestas
+                </button>
+              </Link>
+             
+              <Link to="/ai-tutor">
+                <button className="btn btn--primary">
+                  Explicación con Tutor IA
+                </button>
+              </Link>
+             
             </section>
       
           </div>

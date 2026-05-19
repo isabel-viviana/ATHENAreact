@@ -1,4 +1,5 @@
 import './admin_login.css';
+import Zorrito2D from "../assets/images/Zorrito2D.png";
 
 const AdminLogin = () => {
   return (
@@ -7,13 +8,12 @@ const AdminLogin = () => {
               {/*  Panel Izquierdo  */}
               <div className="left-panel">
                   <div className="logo-top">
-                      <img src="https://via.placeholder.com/40" alt="Logo Athena" className="small-logo" />
+                      <img src="" alt="Logo Athena" className="small-logo" />
                       <h1>ATHENA</h1>
                   </div>
                   <p className="subtitle">Vamos paso por paso.</p>
                   <div className="mascot-container">
-                      {/*  Aquí iría la imagen del zorro con lentes  */}
-                      <img src="/Assets/zorrito3d.jpeg" alt="Mascota Athena con gafas" className="mascot" />
+                      <img src={Zorrito2D} alt="Mascota Athena con gafas" className="mascot" />
                   </div>
               </div>
       

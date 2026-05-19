@@ -1,4 +1,5 @@
 import './subscription.css';
+import { Link } from 'react-router-dom';
 
 const Subscription = () => {
   return (
@@ -45,10 +46,13 @@ const Subscription = () => {
                           </div>
       
                           <div className="subscription-card__actions">
-      
-                              <button className="btn btn--primary">
+
+                            <Link to="/payments">
+                                <button className="btn btn--primary">
                                   Actualizar Pago
-                              </button>
+                                </button>
+                            </Link>
+                              
       
                               <button className="btn btn--secondary">
                                   Cancelar

@@ -1,4 +1,5 @@
 import './mock_quick.css';
+import { Link } from 'react-router-dom';
 
 const MockQuick = () => {
   return (
@@ -66,10 +67,13 @@ const MockQuick = () => {
       
               {/*  FOOTER  */}
               <div className="quiz-footer">
-      
-                <button className="finish-btn">
-                  Finalizar Prueba
-                </button>
+
+                <Link to="/mock-result">
+                  <button className="finish-btn">
+                    Finalizar Prueba
+                  </button>
+                </Link>
+                
       
               </div>
       

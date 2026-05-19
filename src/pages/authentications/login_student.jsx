@@ -1,4 +1,7 @@
 import './login_student.css';
+import Zorrito2D from "../../assets/images/Zorrito2D.png";
+import ZorritoLogo from "../../assets/images/Zorrito6.png";
+import { Link } from 'react-router-dom';
 
 const LoginStudent = () => {
   return (
@@ -7,13 +10,12 @@ const LoginStudent = () => {
               {/*  Panel Izquierdo  */}
               <div className="left-panel">
                   <div className="logo-top">
-                      <img src="https://via.placeholder.com/40" alt="Logo Athena" className="small-logo" />
+                      <img src={ZorritoLogo} alt="Logo Athena" className="small-logo" />
                       <h1>ATHENA</h1>
                   </div>
                   <p className="subtitle">Vamos paso por paso.</p>
                   <div className="mascot-container">
-                      {/*  Aquí iría la imagen del zorro con lentes  */}
-                      <img src="/Assets/zorrito3d.jpeg" alt="Mascota Athena con gafas" className="mascot" />
+                      <img src={Zorrito2D} alt="Mascota Athena con gafas" className="mascot" />
                   </div>
               </div>
       
@@ -26,7 +28,7 @@ const LoginStudent = () => {
                       <form>
                           <input type="text" placeholder="Correo electrónico" className="input-field" />
                           <input type="password" placeholder="Contraseña" className="input-field password-input" />
-                          <button type="submit" className="btn-primary">Iniciar sesión</button>
+                          <Link to="/dashboard"><button type="submit" className="btn-primary">Iniciar sesión</button></Link>
                       </form>
       
                       <div className="divider">
@@ -50,8 +52,8 @@ const LoginStudent = () => {
                               Al continuar, aceptas Términos y Condiciones y Política de privacidad
                           </p>
                           <div className="footer-links">
-                              <a href="#">Crear cuenta</a>
-                              <a href="#">¿Olvidaste tu contraseña?</a>
+                            <Link to="/register">Crear Cuenta</Link>
+                            <Link to="#">¿Olvidaste la contraseña?</Link>
                           </div>
                       </div>
                   </div>

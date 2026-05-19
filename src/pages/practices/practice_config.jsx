@@ -1,5 +1,7 @@
 import './practice_config.css';
+import { Link
 
+ } from 'react-router-dom';
 const PracticeConfig = () => {
   return (
     <>
@@ -39,7 +41,7 @@ const PracticeConfig = () => {
                               </div>
                               <div className="mastery-bar"><div className="fill" style={{ width: '65%' }}></div></div>
                           </div>
-                          <button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button>
+                          <Link to="/practices-full"><button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button></Link>
                       </div>
       
                       {/*  Lectura Crítica (Purple)  */}
@@ -57,7 +59,7 @@ const PracticeConfig = () => {
                               </div>
                               <div className="mastery-bar"><div className="fill" style={{ width: '40%' }}></div></div>
                           </div>
-                          <button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button>
+                          <Link to="/practices-full"><button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button></Link>
                       </div>
       
                       {/*  Sociales (Yellow)  */}
@@ -75,7 +77,7 @@ const PracticeConfig = () => {
                               </div>
                               <div className="mastery-bar"><div className="fill" style={{ width: '80%' }}></div></div>
                           </div>
-                          <button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button>
+                          <Link to="/practices-full"><button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button></Link>
                       </div>
       
                       {/*  Ciencias (Green)  */}
@@ -93,7 +95,7 @@ const PracticeConfig = () => {
                               </div>
                               <div className="mastery-bar"><div className="fill" style={{ width: '55%' }}></div></div>
                           </div>
-                          <button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button>
+                          <Link to="/practices-full"><button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button></Link>
                       </div>
       
                       {/*  Inglés (Red)  */}
@@ -112,7 +114,7 @@ const PracticeConfig = () => {
                               </div>
                               <div className="mastery-bar"><div className="fill" style={{ width: '30%' }}></div></div>
                           </div>
-                          <button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button>
+                          <Link to="/practices-full"><button className="practice-btn">Practicar ahora <i className="fas fa-chevron-right"></i></button></Link>
                       </div>
                   </div>
     </>
