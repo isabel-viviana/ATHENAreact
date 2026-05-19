@@ -281,10 +281,13 @@ const Profile = () => {
                 Tu rendimiento ha mejorado <strong>12%</strong> esta semana.
               </p>
 
-              <button className="btn-outline">
-                Ver estadísticas
-                <i className="fas fa-arrow-right"></i>
-              </button>
+              <Link to="/statistics">
+                <button className="btn-outline">
+                  Ver estadísticas
+                  <i className="fas fa-arrow-right"></i>
+                </button>
+              </Link>
+              
 
             </div>
 

@@ -127,10 +127,12 @@ const Statistics = () => {
                 <div className="recommend-card">
                   <h3 className="recommend-card__title">Recomendación ATHENA</h3>
                   <p className="recommend-card__text">Inglés es tu área con mayor oportunidad de mejora.</p>
-                  <a href="#" className="recommend-card__btn">
+
+                  <Link to="/practices-full" className="recommend-card__btn">
                     <i className="fas fa-dumbbell"></i>
                     Practicar Inglés
-                  </a>
+                  </Link>
+
                 </div>
       
                 {/*  Mini stats  */}

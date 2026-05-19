@@ -1,4 +1,5 @@
 import './profile_notifications.css';
+import Zorrito_10 from '../../assets/images/Zorrito_10.png';
 
 const ProfileNotifications = () => {
   return (
@@ -97,7 +98,7 @@ const ProfileNotifications = () => {
                   </div>
       
                   <div className="mascot-footer">
-                      <img src="https://via.placeholder.com/120" alt="Mascota Athena" className="floating-owl" />
+                      <img src={Zorrito_10} alt="Mascota Athena" className="floating-owl" />
                   </div>
     </>
   );

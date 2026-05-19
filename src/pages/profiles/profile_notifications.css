@@ -98,7 +98,10 @@
 }
 .floating-owl {
     animation: floating 3s ease-in-out infinite;
+    width: 130px; /* Tamaño del logo */
+    
 }
+
 
 @keyframes floating {
     0% { transform: translateY(0px); }
