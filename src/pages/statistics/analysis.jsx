@@ -43,7 +43,7 @@ const Analysis = () => {
                   <div className="topic-card__stat">
                     <span className="badge badge--red">75% de error</span>
                   </div>
-                  <Link to="/mock-quick" className="topic-card__btn">
+                  <Link to="/mock/quick" className="topic-card__btn">
                     Practicar esto <i className="fas fa-arrow-right"></i>
                   </Link>
                 </div>
@@ -56,7 +56,7 @@ const Analysis = () => {
                   <div className="topic-card__stat">
                     <span className="badge badge--yellow">60% de error</span>
                   </div>
-                  <Link to="/mock-quick" className="topic-card__btn">
+                  <Link to="/mock/quick" className="topic-card__btn">
                     Practicar esto <i className="fas fa-arrow-right"></i>
                   </Link>
                 </div>
@@ -69,7 +69,7 @@ const Analysis = () => {
                   <div className="topic-card__stat">
                     <span className="badge badge--yellow">50% de error</span>
                   </div>
-                  <Link to="/mock-quick" className="topic-card__btn">
+                  <Link to="/mock/quick" className="topic-card__btn">
                     Practicar esto <i className="fas fa-arrow-right"></i>
                   </Link>
                 </div>

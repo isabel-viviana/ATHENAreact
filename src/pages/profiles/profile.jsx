@@ -32,7 +32,7 @@ const Profile = () => {
 
               <h1>Andrés Estudiante</h1>
 
-              <Link to="/profile-edit">
+              <Link to="/profile/edit">
                 <button className="edit-btn">
                   <i className="fas fa-pen"></i>
                 </button>
@@ -146,7 +146,7 @@ const Profile = () => {
       {/* ACCOUNT GRID */}
       <section className="account-grid">
 
-        <Link to="/profile-logros">
+<Link to="/profile/achievements">
             <article className="action-card">
 
           <div className="action-card__icon blue-bg">
@@ -172,7 +172,7 @@ const Profile = () => {
         </article>
         </Link>
       
-        <Link to="/mock-history">
+        <Link to="/mock/history">
            <article className="action-card">
 
           <div className="action-card__icon purple-bg">

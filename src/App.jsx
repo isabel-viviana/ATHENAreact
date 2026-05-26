@@ -7,6 +7,10 @@ import MainLayout from './components/MainLayout';
 import LoginStudent from './pages/authentications/login_student';
 import RegisterStudent from './pages/authentications/register_student';
 
+// Layouts adicionales
+import MockLayout from './pages/mock_exams/MockLayout';
+import ProfileLayout from './pages/profiles/ProfileLayout';
+
 // Páginas Internas
 import Dashboard from './pages/dashboards/dashboard';
 import MockConfig from './pages/mock_exams/mock_config';
@@ -46,26 +50,35 @@ function App() {
         {/* Rutas con Sidebar (MainLayout) */}
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/mock-config" element={<MockConfig />} />
-          <Route path="/mock-quick" element={<MockQuick />} />
-          <Route path="/mock-exam" element={<MockExam/>} />
-          <Route path="/mock-result" element={<MockResult/>}/>
-          <Route path="/mock-review" element={<MockReview/>}/>
-          <Route path="/mock-history" element={<MockHistory/>}/>
+
+          <Route path="/mock" element={<MockLayout />}>
+            <Route index element={<MockConfig />} />
+            <Route path="config" element={<MockConfig />} />
+            <Route path="quick" element={<MockQuick />} />
+            <Route path="exam" element={<MockExam />} />
+            <Route path="result" element={<MockResult />} />
+            <Route path="review" element={<MockReview />} />
+            <Route path="history" element={<MockHistory />} />
+          </Route>
+
           <Route path="/ai-tutor" element={<AiTutor />} />
           <Route path="/practices" element={<Practices />} />
-          <Route path="/practices-full" element={<PracticesFull/>}/>
-          <Route path="/practices-result" element={<PracticesResult/>}/>
-          <Route path="/profile" element={<Profiles />} />
-          <Route path="/profile-logros" element={<ProfileLogros/>}/>
-          <Route path="/profile-edit" element={<ProfileEdit/>}/>
+          <Route path="/practices-full" element={<PracticesFull />} />
+          <Route path="/practices-result" element={<PracticesResult />} />
+
+          <Route path="/profile" element={<ProfileLayout />}>
+            <Route index element={<Profiles />} />
+            <Route path="edit" element={<ProfileEdit />} />
+            <Route path="achievements" element={<ProfileLogros />} />
+            <Route path="notifications" element={<Notificaciones />} />
+          </Route>
+
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/statistics" element={<Statistics />} />
-          <Route path="/analysis" element={<Analysis/>}/>
+          <Route path="/analysis" element={<Analysis />} />
           <Route path="/store" element={<Store />} />
           <Route path="/subscriptions" element={<Subscriptions />} />
-          <Route path="/payments" element={<Payments/>}/>
-          <Route path="/notificaciones" element={<Notificaciones/>}/>
+          <Route path="/payments" element={<Payments />} />
         </Route>
 
         {/* Redirección por defecto */}
