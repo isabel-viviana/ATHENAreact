@@ -1,5 +1,5 @@
-﻿const fs = require('fs');
-const path = require('path');
+﻿const fs = require("fs");
+const path = require("path");
 
 const content = `import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
@@ -35,5 +35,9 @@ const MainLayout = () => {
 export default MainLayout;
 `;
 
-fs.writeFileSync(path.join(__dirname, 'src', 'components', 'MainLayout.jsx'), content, 'utf8');
-console.log('MainLayout written explicitly as UTF-8');
+fs.writeFileSync(
+    path.join(__dirname, "src", "components", "MainLayout.jsx"),
+    content,
+    "utf8",
+);
+console.log("MainLayout written explicitly as UTF-8");

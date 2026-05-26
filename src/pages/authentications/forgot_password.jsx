@@ -1,21 +1,24 @@
-import './forgot_password.css';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import "./forgot_password.css";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/reset-password');
+        navigate("/reset-password");
     };
 
     return (
         <div className="forgot-page">
             <div className="forgot-card">
                 <h2>Recuperar contraseña</h2>
-                <p>Introduce tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+                <p>
+                    Introduce tu correo electrónico y te enviaremos un enlace
+                    para restablecer tu contraseña.
+                </p>
 
                 <form onSubmit={handleSubmit} className="forgot-form">
                     <input
@@ -27,17 +30,16 @@ const ForgotPassword = () => {
                         required
                     />
 
-                    <button type="submit" className="btn-primary">Enviar enlace</button>
+                    <button type="submit" className="btn-primary">
+                        Enviar enlace
+                    </button>
                 </form>
 
                 <div className="forgot-footer">
                     <Link to="/login">Volver al login</Link>
                 </div>
-
             </div>
-
         </div>
-        
     );
 };
 
