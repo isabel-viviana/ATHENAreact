@@ -83,10 +83,7 @@ const Dashboard = () => {
 
                     <div className="mascot-book">
 
-                        <img
-                        src={Librito}
-                        alt="Libro 3D"
-                        />
+                        <img src={Librito} alt="Libro 3D"/>
 
                     </div>
 

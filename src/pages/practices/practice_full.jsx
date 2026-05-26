@@ -1,5 +1,6 @@
 import './practice_full.css';
 import { Link } from 'react-router-dom';
+import Zorrito from '../../assets/images/Zorrito2D.png';
 
 const PracticeFull = () => {
     return (
@@ -89,7 +90,7 @@ const PracticeFull = () => {
                 </div>
         
                 <div className="assistant__bot">
-                    🤖
+                    <img src={Zorrito} alt="Zorrito" />
                 </div>
         
             </div>

@@ -1,5 +1,6 @@
 import './mock_history.css';
 import { Link } from 'react-router-dom';
+import Zorrito from '../../assets/images/Zorrito2D.png';
 
 const MockHistory = () => {
     return (
@@ -195,7 +196,7 @@ const MockHistory = () => {
                 </div>
         
                 <div className="assistant__bot">
-                    🤖
+                    <img src={Zorrito} alt="Zorrito" />
                 </div>
 
             </div>

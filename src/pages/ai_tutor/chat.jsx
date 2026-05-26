@@ -1,4 +1,6 @@
 import './chat.css';
+import Zorrito from '../../assets/images/Zorrito6.png';
+import Zorrito2 from '../../assets/images/Zorrito_3.png';
 
 const Chat = () => {
     return (
@@ -11,7 +13,7 @@ const Chat = () => {
                 <div className="tutor-header__left">
         
                     <div className="tutor-avatar">
-                        <i className="fas fa-robot"></i>
+                        <img src={Zorrito} alt="Zorrito" />
                     </div>
         
                     <div>
@@ -36,7 +38,7 @@ const Chat = () => {
         
                     <div className="ai-message__top">
                         <div className="mini-avatar">
-                            <i className="fas fa-brain"></i>
+                            <img src={Zorrito2} alt="Zorrito2" />
                         </div>
             
                         <div>

@@ -1,5 +1,6 @@
 import './mock_quick.css';
 import { Link } from 'react-router-dom';
+import Zorrito from '../../assets/images/Zorrito2D.png';
 
 const MockQuick = () => {
     return (
@@ -88,7 +89,7 @@ const MockQuick = () => {
                 </div>
         
                 <div className="assistant__bot">
-                    🤖
+                    <img src={Zorrito} alt="Zorrito" />
                 </div>
         
             </div>

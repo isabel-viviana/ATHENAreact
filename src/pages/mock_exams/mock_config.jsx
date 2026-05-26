@@ -1,5 +1,6 @@
 import './mock_config.css';
 import { Link } from 'react-router-dom';
+import Zorrito from '../../assets/images/Zorrito2D.png';
 
 const MockConfig = () => {
 	return (
@@ -221,7 +222,7 @@ const MockConfig = () => {
 				</div>
 
 				<div className="assistant-avatar">
-					🤖
+					<img src={Zorrito} alt="Zorrito" />
 				</div>
 
 			</div>

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css';
+import logo from "../assets/images/Zorrito_8.png";
 
 const Sidebar = () => {
     const location = useLocation();
@@ -17,10 +18,10 @@ const Sidebar = () => {
 
             {/* LOGO */}
             <div className="sidebar__logo">
-                <i className="fas fa-brain"></i>
+                <img src={logo} alt="Zorrito" />
                 <span className="sidebar__brand">ATHENA</span>
             </div>
-
+    
             {/* NAVIGATION */}
             <nav className="sidebar__nav">
 
