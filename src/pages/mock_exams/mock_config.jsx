@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Zorrito from "../../assets/images/Zorrito2D.png";
 
 const MockConfig = () => {
+    /* vista estatica de configuracion del simulacro (checkbox/radio solo lectura) */
     return (
         <section className="mock-config">
             <div className="main__content">

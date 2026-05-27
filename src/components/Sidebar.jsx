@@ -6,9 +6,11 @@ const Sidebar = () => {
     const location = useLocation();
 
     const isActive = (path, startsWith = false) => {
+        /* startsWith permite mantener activo todo un sub-ruta (ej: perfil/...) */
         const active = startsWith
             ? location.pathname.startsWith(path)
             : location.pathname === path;
+
 
         return active ? "sidebar__link--active" : "";
     };

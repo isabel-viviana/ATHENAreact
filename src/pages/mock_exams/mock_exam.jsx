@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Zorrito from "../../assets/images/Zorrito2D.png";
 
 const MockExam = () => {
+    /* quiz de una pregunta: UI estatica con navegacion por rutas */
     return (
         <>
             <div className="main__content">

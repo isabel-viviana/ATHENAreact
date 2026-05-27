@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const ResetPassword = () => {
+    /* flujo de restablecimiento: validaciones sincronas antes de redirigir */
+    /* importante: aqui solo validamos en cliente; el submit redirige a login */
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
     const [error, setError] = useState("");
@@ -24,7 +26,7 @@ const ResetPassword = () => {
             return;
         }
 
-        // Simulación de éxito: redirigir al login
+        /* importante: valida antes de redirigir; no hay backend en esta demo */
         navigate("/login");
     };
 

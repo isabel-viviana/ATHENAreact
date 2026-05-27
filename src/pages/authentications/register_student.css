@@ -4,7 +4,7 @@
     height: 100vh;
 }
 
-/* --- Panel Izquierdo --- */
+/* registro: panel izquierdo identico al login */
 .left-panel {
     flex: 1;
     background: radial-gradient(circle at center, #1a3a8a 0%, #050a18 80%);

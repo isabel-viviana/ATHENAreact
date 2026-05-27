@@ -3,10 +3,15 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
+    /* vista simple: recolecta correo y navega al reset (sin request real) */
+    /* estado local para controlar el input del correo */
     const [email, setEmail] = useState("");
+
+    /* navigation del flujo: esta vista no hace request real */
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
+        /* evita recarga; el submit solo nos manda a la pantalla de reset */
         e.preventDefault();
         navigate("/reset-password");
     };

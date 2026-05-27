@@ -6,6 +6,10 @@ import Footer from "./footer/Footer";
 const MainLayout = () => {
     const location = useLocation();
 
+    /* importante: key={location.pathname} fuerza el re-montaje de cada ruta
+    asi la animacion de framer-motion no se “estanca” cuando cambias de pagina */
+
+
     return (
         <div
             className="layout"
@@ -15,7 +19,7 @@ const MainLayout = () => {
                 backgroundColor: "var(--bg-dark)",
             }}
         >
-            {/* Sidebar izquierda */}
+            {/* sidebar izquierda: fija el marco del layout para que el main scroll sea independiente */}
             <Sidebar />
 
             {/* Contenedor principal */}

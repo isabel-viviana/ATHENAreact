@@ -5,21 +5,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const LoginStudent = () => {
+    /* estado local del formulario: se usa para validar y controlar el boton */
+    /* importante: estos estados evitan errores tipicos de submit duplicado */
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    /* navegacion post submit: mantiene la vista declarativa con react-router */
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
+        /* evita recarga del navegador para mantener el SPA */
         e.preventDefault();
         setError("");
 
+        /* validacion minima antes de “simular” el submit */
         if (!email.trim() || !password.trim()) {
             setError("Por favor completa el correo y la contraseña.");
             return;
         }
 
+        /* importante: deshabilitar el boton previene dobles submits en taps rapidos */
         setIsSubmitting(true);
         setTimeout(() => {
             setIsSubmitting(false);

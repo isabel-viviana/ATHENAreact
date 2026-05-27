@@ -1,6 +1,7 @@
 import "./practice_config.css";
 import { Link } from "react-router-dom";
 const PracticeConfig = () => {
+    /* practica por areas: vista estatica con cards (sin estado) */
     return (
         <>
             <header className="page-header">
@@ -11,7 +12,7 @@ const PracticeConfig = () => {
                     </p>
                 </div>
 
-                {/*  Card de Objetivo Diario  */}
+                {/* objetivo diario: meta y progreso estimado (ui) */}
                 <div className="daily-goal-card">
                     <div className="goal-icon">
                         <i className="fas fa-bullseye"></i>
@@ -31,9 +32,9 @@ const PracticeConfig = () => {
                 </div>
             </header>
 
-            {/*  Grid de Áreas  */}
+            {/* grid de areas (tarjetas de acceso rapido) */}
             <div className="areas-grid">
-                {/*  Matemáticas (Blue)  */}
+                {/* area matematicas: entrada rapida a la practica completa */}
                 <div className="area-card math-area">
                     <div className="card-top">
                         <div className="area-icon">

@@ -3,7 +3,12 @@ import Zorrito from "../../assets/images/Zorrito6.png";
 import Zorrito2 from "../../assets/images/Zorrito_3.png";
 
 const Chat = () => {
+    /* vista del chat: la estructura es estatica (sin persistir mensajes) */
+
+    /* tip: cada bloque usa clases especificas para que el CSS controle el look
+    sin necesidad de estilos inline */
     return (
+
         <>
             <div className="main__content">
                 {/*  HEADER  */}
@@ -28,7 +33,7 @@ const Chat = () => {
                     </button>
                 </section>
 
-                {/*  IA MESSAGE  */}
+                {/* bloque del mensaje de la IA (solo estructura visual) */}
                 <section className="ai-message">
                     <div className="ai-message__top">
                         <div className="mini-avatar">

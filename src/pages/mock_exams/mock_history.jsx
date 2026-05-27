@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import Zorrito from "../../assets/images/Zorrito2D.png";
 
 const MockHistory = () => {
+    /* historial de simulacros: lista estatica pensada para lectura rapida */
     return (
+
         <>
             <div className="main__content">
                 {/*  TITLE  */}

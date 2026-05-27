@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Zorrito from "../../assets/images/Zorrito2D.png";
 
 const MockQuick = () => {
+    /* simulacro rapido: UI fija para 1/10 (sin estado real de respuestas) */
     return (
         <>
+
             <div className="main__content">
                 {/*  QUIZ CONTAINER  */}
                 <section className="quiz-container">

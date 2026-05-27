@@ -5,20 +5,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const RegisterStudent = () => {
+    /* estado local del formulario (correo) */
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    /* ruta de salida luego del submit */
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
+        /* evita recarga del navegador */
         e.preventDefault();
         setError("");
 
+        /* validacion minima para no simular submits vacios */
         if (!email.trim()) {
             setError("Ingresa tu correo electrónico.");
             return;
         }
 
+        /* importante: deshabilita el boton mientras “carga” */
         setIsSubmitting(true);
         setTimeout(() => {
             setIsSubmitting(false);

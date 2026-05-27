@@ -4,7 +4,7 @@
     height: 100vh;
 }
 
-/* --- Panel Izquierdo --- */
+/* login: panel izquierdo con fondo radial y mascot */
 .left-panel {
     flex: 1;
     background: radial-gradient(circle at center, #1a3a8a 0%, #050a18 80%);
@@ -64,6 +64,7 @@
 }
 
 h2 {
+    /* titulo principal del formulario */
     font-size: 2rem;
     margin-bottom: 10px;
 }

@@ -1,5 +1,8 @@
-﻿/* ==========================================
-   GLOBAL NAVBAR
+/* global navbar: barra superior (no es sticky aqui; se maneja por layout de la pagina) */
+
+
+/* ==========================================
+   global navbar
 ========================================== */
 
 .global-navbar {

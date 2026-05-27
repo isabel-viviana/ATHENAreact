@@ -6,6 +6,8 @@ const MockLayout = () => {
     const [timerRunning, setTimerRunning] = useState(false);
 
     useEffect(() => {
+        /* importante: el intervalo se crea/destruye segun timerRunning
+        asi evitamos acumulacion de timers y drift en UI */
         let interval;
         if (timerRunning) {
             interval = setInterval(() => {

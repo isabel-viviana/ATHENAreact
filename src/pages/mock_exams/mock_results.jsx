@@ -2,10 +2,12 @@ import "./mock_results.css";
 import { Link } from "react-router-dom";
 
 const MockResults = () => {
+    /* vista estatica de resultados globales y por area (sin fetch) */
     return (
+
         <>
             <div className="main__content">
-                {/*  RESULTADO  */}
+                {/* resultado global: puntuacion y lectura rapida del rendimiento */}
                 <section className="result-card">
                     <h1>¡Simulacro Finalizado!</h1>
                     <p>Aquí están tus resultados globales.</p>
@@ -18,7 +20,7 @@ const MockResults = () => {
                     </div>
                 </section>
 
-                {/*  STATS  */}
+                {/*  stats: desglose general (donut + leyenda) */}
                 <section className="stats-grid">
                     {/*  DESEMPEÑO  */}
                     <div className="card">
