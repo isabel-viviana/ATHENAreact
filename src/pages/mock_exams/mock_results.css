@@ -275,6 +275,70 @@
 }
 
 /* ==========================================
+   MINI-STATS (debajo del score-circle)
+========================================== */
+
+.result-mini-stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.result-mini-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 72px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--bg-soft);
+}
+
+.result-mini-stat__value {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.result-mini-stat__label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-mini-stat--green .result-mini-stat__value { color: var(--green); }
+.result-mini-stat--red   .result-mini-stat__value { color: var(--red);   }
+.result-mini-stat--gray  .result-mini-stat__value { color: #94a3b8;      }
+.result-mini-stat--blue  .result-mini-stat__value { color: #38bdf8;      }
+
+/* ==========================================
+   LOADING SPINNER
+========================================== */
+
+.result-loading__title {
+    margin-bottom: 12px;
+}
+
+.result-loading__spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    margin: 28px auto 0;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================
    ACTIONS
 ========================================== */
 
@@ -285,6 +349,7 @@
 
     flex-wrap: wrap;
 }
+
 
 .btn {
     border: none;
@@ -318,6 +383,17 @@
 
 .btn--primary:hover {
     transform: translateY(-2px);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.btn--ghost:hover {
+    background: var(--bg-soft);
+    color: var(--text-primary, #fff);
 }
 
 /* ==========================================

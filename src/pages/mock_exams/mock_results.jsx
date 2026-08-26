@@ -1,28 +1,216 @@
 import "./mock_results.css";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+
+import { getExamResults } from "../../api/exams";
+
+/*
+ * Colores de barra por índice de materia.
+ * Si el backend envía un color, se usa ese.
+ * Si no, se rota por esta paleta.
+ */
+const BAR_COLORS = ["green", "blue", "yellow", "red", "green"];
+
+/*
+ * Calcula stroke-dasharray / stroke-dashoffset para el donut SVG.
+ *
+ * El círculo tiene circumference = 2 * π * 15.915 ≈ 100
+ * → 1 punto de dash = 1 %
+ */
+const buildDonutSegments = (correct, incorrect, omitted, total) => {
+    if (!total || total === 0) {
+        return { correctDash: "0 100", incorrectDash: "0 100", incorrectOffset: "0", omittedDash: "0 100", omittedOffset: "0" };
+    }
+
+    const correctPct   = Math.round((correct  / total) * 100);
+    const incorrectPct = Math.round((incorrect / total) * 100);
+    const omittedPct   = Math.max(0, 100 - correctPct - incorrectPct);
+
+    return {
+        correctDash:    `${correctPct} ${100 - correctPct}`,
+        incorrectDash:  `${incorrectPct} ${100 - incorrectPct}`,
+        incorrectOffset: `${-correctPct}`,
+        omittedDash:    `${omittedPct} ${100 - omittedPct}`,
+        omittedOffset:  `${-(correctPct + incorrectPct)}`,
+    };
+};
+
+/*
+ * Adapta la respuesta de Laravel a una forma canónica.
+ * El backend puede devolver distintas shapes.
+ */
+const normalizeResults = (raw) => {
+    // Intentamos varias capas de wrapping que Laravel puede enviar
+    const data = raw?.data ?? raw;
+
+    const score    = data?.score          ?? data?.total_score    ?? data?.puntaje        ?? 0;
+    const correct  = data?.correct        ?? data?.correctas      ?? data?.correct_count  ?? 0;
+    const incorrect= data?.incorrect      ?? data?.incorrectas    ?? data?.incorrect_count?? 0;
+    const omitted  = data?.omitted        ?? data?.omitidas       ?? data?.omitted_count  ?? 0;
+    const total    = data?.total          ?? data?.total_questions?? (correct + incorrect + omitted);
+    const accuracy = data?.accuracy       ?? data?.porcentaje_aciertos
+                  ?? (total > 0 ? Math.round((correct / total) * 100) : 0);
+
+    // Rendimiento por materia — prueba varios nombres de campo
+    const rawSubjects =
+        data?.subjects_performance ??
+        data?.subject_performance  ??
+        data?.subjects             ??
+        data?.areas                ??
+        [];
+
+    const subjects = rawSubjects.map((s, i) => ({
+        name    : s?.name     ?? s?.subject_name ?? s?.subject ?? s?.materia ?? `Área ${i + 1}`,
+        score   : s?.score    ?? s?.correct      ?? s?.puntaje ?? 0,
+        total   : s?.total    ?? s?.questions    ?? s?.total_questions ?? 0,
+        percent : s?.percent  ?? s?.accuracy     ??
+                  (s?.total > 0 ? Math.round(((s?.score ?? s?.correct ?? 0) / s?.total) * 100) : 0),
+        color   : s?.color    ?? BAR_COLORS[i % BAR_COLORS.length],
+    }));
+
+    return { score, correct, incorrect, omitted, total, accuracy, subjects };
+};
+
+/* ============================================================
+   COMPONENTE PRINCIPAL
+   ============================================================ */
 
 const MockResults = () => {
-    /* vista estatica de resultados globales y por area (sin fetch) */
-    return (
+    const [searchParams]  = useSearchParams();
+    const navigate        = useNavigate();
 
+    const examId = searchParams.get("id");
+
+    const [results, setResults] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error,   setError  ] = useState("");
+
+    /* ----------------------------------------------------------
+       CARGAR RESULTADOS
+    ---------------------------------------------------------- */
+    useEffect(() => {
+        const loadResults = async () => {
+            if (!examId) {
+                setError("No encontramos el ID del simulacro. Regresa al dashboard e inténtalo nuevamente.");
+                setLoading(false);
+                return;
+            }
+
+            try {
+                setLoading(true);
+                setError("");
+
+                const raw = await getExamResults(examId);
+
+                console.log("RESULTADOS DEL SIMULACRO:", raw);
+
+                const normalized = normalizeResults(raw);
+                setResults(normalized);
+            } catch (err) {
+                console.error("ERROR AL CARGAR RESULTADOS:", err);
+                setError(
+                    err?.response?.data?.message ??
+                    err?.message ??
+                    "No se pudieron cargar los resultados del simulacro."
+                );
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadResults();
+    }, [examId]);
+
+    /* ----------------------------------------------------------
+       ESTADO DE CARGA
+    ---------------------------------------------------------- */
+    if (loading) {
+        return (
+            <div className="main__content">
+                <section className="result-card">
+                    <h1 className="result-loading__title">Cargando resultados...</h1>
+                    <p>Estamos calculando tu desempeño en el simulacro.</p>
+                    <div className="result-loading__spinner"></div>
+                </section>
+            </div>
+        );
+    }
+
+    /* ----------------------------------------------------------
+       ESTADO DE ERROR
+    ---------------------------------------------------------- */
+    if (error) {
+        return (
+            <div className="main__content">
+                <section className="result-card">
+                    <h1>No pudimos cargar los resultados</h1>
+                    <p>{error}</p>
+
+                    <div className="actions" style={{ marginTop: "28px" }}>
+                        <button
+                            className="btn btn--secondary"
+                            onClick={() => navigate("/dashboard")}
+                        >
+                            Volver al Dashboard
+                        </button>
+                    </div>
+                </section>
+            </div>
+        );
+    }
+
+    /* ----------------------------------------------------------
+       DATOS CALCULADOS
+    ---------------------------------------------------------- */
+    const { score, correct, incorrect, omitted, total, accuracy, subjects } = results;
+
+    const { correctDash, incorrectDash, incorrectOffset, omittedDash, omittedOffset } =
+        buildDonutSegments(correct, incorrect, omitted, total);
+
+    /* ----------------------------------------------------------
+       INTERFAZ
+    ---------------------------------------------------------- */
+    return (
         <>
             <div className="main__content">
-                {/* resultado global: puntuacion y lectura rapida del rendimiento */}
+
+                {/* RESULTADO GLOBAL */}
                 <section className="result-card">
                     <h1>¡Simulacro Finalizado!</h1>
                     <p>Aquí están tus resultados globales.</p>
 
                     <div className="score-circle">
                         <div className="score-circle__inner">
-                            <h2>315</h2>
+                            <h2>{score}</h2>
                             <span>Puntos ICFES</span>
+                        </div>
+                    </div>
+
+                    {/* Mini-stats debajo del círculo */}
+                    <div className="result-mini-stats">
+                        <div className="result-mini-stat result-mini-stat--green">
+                            <span className="result-mini-stat__value">{correct}</span>
+                            <span className="result-mini-stat__label">Correctas</span>
+                        </div>
+                        <div className="result-mini-stat result-mini-stat--red">
+                            <span className="result-mini-stat__value">{incorrect}</span>
+                            <span className="result-mini-stat__label">Incorrectas</span>
+                        </div>
+                        <div className="result-mini-stat result-mini-stat--gray">
+                            <span className="result-mini-stat__value">{omitted}</span>
+                            <span className="result-mini-stat__label">Omitidas</span>
+                        </div>
+                        <div className="result-mini-stat result-mini-stat--blue">
+                            <span className="result-mini-stat__value">{accuracy}%</span>
+                            <span className="result-mini-stat__label">Aciertos</span>
                         </div>
                     </div>
                 </section>
 
-                {/*  stats: desglose general (donut + leyenda) */}
+                {/* STATS GRID */}
                 <section className="stats-grid">
-                    {/*  DESEMPEÑO  */}
+
+                    {/* DESEMPEÑO: DONUT DINÁMICO */}
                     <div className="card">
                         <h3>
                             <i className="fas fa-chart-column"></i>
@@ -31,54 +219,46 @@ const MockResults = () => {
 
                         <div className="donut-chart">
                             <svg viewBox="0 0 42 42">
-                                {/*  fondo  */}
+                                {/* Fondo */}
                                 <circle
-                                    cx="21"
-                                    cy="21"
-                                    r="15.915"
+                                    cx="21" cy="21" r="15.915"
                                     fill="transparent"
                                     stroke="#1E293B"
-                                    stroke-width="3"
+                                    strokeWidth="3"
                                 />
 
-                                {/*  correctas  */}
+                                {/* Correctas */}
                                 <circle
-                                    cx="21"
-                                    cy="21"
-                                    r="15.915"
+                                    cx="21" cy="21" r="15.915"
                                     fill="transparent"
                                     stroke="#22C55E"
-                                    stroke-width="3"
-                                    stroke-dasharray="68 32"
-                                    stroke-linecap="round"
+                                    strokeWidth="3"
+                                    strokeDasharray={correctDash}
+                                    strokeLinecap="round"
                                     transform="rotate(-90 21 21)"
                                 />
 
-                                {/*  incorrectas  */}
+                                {/* Incorrectas */}
                                 <circle
-                                    cx="21"
-                                    cy="21"
-                                    r="15.915"
+                                    cx="21" cy="21" r="15.915"
                                     fill="transparent"
                                     stroke="#EF4444"
-                                    stroke-width="3"
-                                    stroke-dasharray="18 82"
-                                    stroke-dashoffset="-68"
-                                    stroke-linecap="round"
+                                    strokeWidth="3"
+                                    strokeDasharray={incorrectDash}
+                                    strokeDashoffset={incorrectOffset}
+                                    strokeLinecap="round"
                                     transform="rotate(-90 21 21)"
                                 />
 
-                                {/*  omitidas  */}
+                                {/* Omitidas */}
                                 <circle
-                                    cx="21"
-                                    cy="21"
-                                    r="15.915"
+                                    cx="21" cy="21" r="15.915"
                                     fill="transparent"
                                     stroke="#94A3B8"
-                                    stroke-width="3"
-                                    stroke-dasharray="8 92"
-                                    stroke-dashoffset="-86"
-                                    stroke-linecap="round"
+                                    strokeWidth="3"
+                                    strokeDasharray={omittedDash}
+                                    strokeDashoffset={omittedOffset}
+                                    strokeLinecap="round"
                                     transform="rotate(-90 21 21)"
                                 />
                             </svg>
@@ -87,96 +267,82 @@ const MockResults = () => {
                         <div className="legend">
                             <div className="legend-item">
                                 <span className="dot dot--green"></span>
-                                Correctas
+                                Correctas ({correct})
                             </div>
-
                             <div className="legend-item">
                                 <span className="dot dot--red"></span>
-                                Incorrectas
+                                Incorrectas ({incorrect})
                             </div>
-
                             <div className="legend-item">
                                 <span className="dot dot--gray"></span>
-                                Omitidas
+                                Omitidas ({omitted})
                             </div>
                         </div>
                     </div>
 
-                    {/*  RESULTADOS  */}
+                    {/* RENDIMIENTO POR MATERIA */}
                     <div className="card">
-                        <h3>Resultados por Área</h3>
-                        <div className="subject">
-                            <div className="subject__top">
-                                <span>Matemáticas</span>
-                                <span>68/100</span>
-                            </div>
+                        <h3>
+                            <i className="fas fa-book-open"></i>
+                            Resultados por Área
+                        </h3>
 
-                            <div className="subject__bar">
-                                <div
-                                    className="subject__fill green"
-                                    style={{ width: "68%" }}
-                                ></div>
-                            </div>
-                        </div>
+                        {subjects.length > 0 ? (
+                            subjects.map((subj, idx) => {
+                                const label = subj.total > 0
+                                    ? `${subj.score}/${subj.total}`
+                                    : `${subj.percent}%`;
 
-                        <div className="subject">
-                            <div className="subject__top">
-                                <span>Lectura Crítica</span>
-                                <span>45/100</span>
-                            </div>
+                                const widthPct = Math.min(100, Math.max(0, subj.percent));
 
-                            <div className="subject__bar">
-                                <div
-                                    className="subject__fill red"
-                                    style={{ width: "45%" }}
-                                ></div>
-                            </div>
-                        </div>
-
-                        <div className="subject">
-                            <div className="subject__top">
-                                <span>Sociales</span>
-                                <span>55/100</span>
-                            </div>
-
-                            <div className="subject__bar">
-                                <div
-                                    className="subject__fill yellow"
-                                    style={{ width: "55%" }}
-                                ></div>
-                            </div>
-                        </div>
-
-                        <div className="subject">
-                            <div className="subject__top">
-                                <span>Ciencias</span>
-                                <span>72/100</span>
-                            </div>
-
-                            <div className="subject__bar">
-                                <div
-                                    className="subject__fill blue"
-                                    style={{ width: "72%" }}
-                                ></div>
-                            </div>
-                        </div>
+                                return (
+                                    <div className="subject" key={idx}>
+                                        <div className="subject__top">
+                                            <span>{subj.name}</span>
+                                            <span>{label}</span>
+                                        </div>
+                                        <div className="subject__bar">
+                                            <div
+                                                className={`subject__fill ${subj.color}`}
+                                                style={{ width: `${widthPct}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <p style={{ color: "var(--text-secondary)", fontSize: "14px" }}>
+                                No se recibió desglose por materia.
+                            </p>
+                        )}
                     </div>
+
                 </section>
 
-                {/*  BOTONES  */}
+                {/* BOTONES DE ACCIÓN */}
                 <section className="actions">
-                    <Link to="/mock/review">
+                    <Link to={`/mock/review?id=${examId}`}>
                         <button className="btn btn--secondary">
+                            <i className="fas fa-list-check"></i>
                             Revisar Respuestas
                         </button>
                     </Link>
 
                     <Link to="/ai-tutor">
                         <button className="btn btn--primary">
+                            <i className="fas fa-robot"></i>
                             Explicación con Tutor IA
                         </button>
                     </Link>
+
+                    <Link to="/dashboard">
+                        <button className="btn btn--ghost">
+                            <i className="fas fa-house"></i>
+                            Volver al Dashboard
+                        </button>
+                    </Link>
                 </section>
+
             </div>
         </>
     );

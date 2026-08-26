@@ -5,18 +5,31 @@ import {
     Navigate,
 } from "react-router-dom";
 
-// Layout base
+// Layout base (Estudiante)
 import MainLayout from "./components/MainLayout";
 
-// Páginas de Autenticación
+// Layout Administrativo
+import AdminLayout from "./components/AdminLayout";
+
+// Páginas de Autenticación Estudiante
 import LoginStudent from "./pages/authentications/login_student";
 import RegisterStudent from "./pages/authentications/register_student";
 
-// Layouts adicionales
+// Páginas del Módulo Administrativo
+import LoginAdmin from "./pages/admin/login_admin";
+import DashboardSuper from "./pages/admin/dashboard_super";
+import DashboardAdmin from "./pages/admin/dashboard_admin";
+import DashboardSupport from "./pages/admin/dashboard_support";
+import Users from "./pages/admin/users";
+import Questions from "./pages/admin/questions";
+import Subjects from "./pages/admin/subjects";
+import Exams from "./pages/admin/exams";
+
+// Layouts adicionales Estudiante
 import MockLayout from "./pages/mock_exams/MockLayout";
 import ProfileLayout from "./pages/profiles/ProfileLayout";
 
-// Páginas Internas
+// Páginas Internas Estudiante
 import Dashboard from "./pages/dashboards/dashboard";
 import MockConfig from "./pages/mock_exams/mock_config";
 import MockQuick from "./pages/mock_exams/mock_quick";
@@ -45,13 +58,27 @@ function App() {
     return (
         <Router>
             <Routes>
-                {/* Rutas sin Sidebar (Login/Registro) */}
+                {/* Rutas sin Sidebar (Login/Registro Estudiante) */}
                 <Route path="/login" element={<LoginStudent />} />
                 <Route path="/register" element={<RegisterStudent />} />
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
 
-                {/* Rutas con Sidebar (MainLayout) */}
+                {/* Ruta de Autenticación Administrativa */}
+                <Route path="/admin/login" element={<LoginAdmin />} />
+
+                {/* Rutas del Módulo Administrativo (AdminLayout) */}
+                <Route element={<AdminLayout />}>
+                    <Route path="/super/dashboard" element={<DashboardSuper />} />
+                    <Route path="/admin/dashboard" element={<DashboardAdmin />} />
+                    <Route path="/support/dashboard" element={<DashboardSupport />} />
+                    <Route path="/admin/users" element={<Users />} />
+                    <Route path="/admin/questions" element={<Questions />} />
+                    <Route path="/admin/subjects" element={<Subjects />} />
+                    <Route path="/admin/exams" element={<Exams />} />
+                </Route>
+
+                {/* Rutas con Sidebar Estudiante (MainLayout) */}
                 <Route element={<MainLayout />}>
                     <Route path="/dashboard" element={<Dashboard />} />
 
@@ -102,3 +129,4 @@ function App() {
 }
 
 export default App;
+
